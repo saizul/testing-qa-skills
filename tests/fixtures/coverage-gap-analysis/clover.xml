@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1732000000">
+  <project timestamp="1732000000">
+    <file name="/app/src/app/pricing.py">
+      <line num="9" type="method" name="total" count="5"/>
+      <line num="9" type="stmt" count="5"/>
+      <line num="10" type="stmt" count="5"/>
+      <line num="11" type="cond" truecount="1" falsecount="1" count="5"/>
+      <line num="12" type="stmt" count="0"/>
+      <line num="14" type="stmt" count="5"/>
+      <line num="35" type="stmt" count="1"/>
+      <line num="36" type="stmt" count="1"/>
+    </file>
+    <file name="/app/src/app/utils.py">
+      <line num="5" type="stmt" count="0"/>
+      <line num="6" type="stmt" count="0"/>
+    </file>
+  </project>
+</coverage>

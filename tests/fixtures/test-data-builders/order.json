@@ -1,0 +1,17 @@
+{
+  "id": 981,
+  "uuid": "3f2b8c1e-9a4d-4e2b-8f1a-2c3d4e5f6a7b",
+  "customerId": 17,
+  "email": "jane.doe@example.com",
+  "status": "paid",
+  "total": 129.95,
+  "quantity": 3,
+  "gift": false,
+  "coupon": null,
+  "placed_at": "2026-11-20T14:31:07Z",
+  "ship_by": "2026-11-24",
+  "receipt_url": "https://shop.example.com/r/981",
+  "tags": ["vip", "holiday"],
+  "shipping_address": {"line1": "1 Main St", "city": "Springfield", "zip": "12345"},
+  "line_items": [{"sku": "SKU-1", "qty": 1, "price": 99.95}]
+}

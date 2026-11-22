@@ -1,0 +1,4 @@
+pytest>=8
+ruff>=0.6
+# Optional: lets the api-contract-testing tests read the YAML fixture spec.
+pyyaml>=6

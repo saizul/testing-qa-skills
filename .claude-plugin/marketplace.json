@@ -1,0 +1,28 @@
+{
+  "name": "testing-qa-skills",
+  "description": "Practical Agent Skills for writing and maintaining tests across stacks.",
+  "owner": {
+    "name": "Saizul Amin",
+    "url": "https://github.com/saizul"
+  },
+  "plugins": [
+    {
+      "name": "testing-qa-skills",
+      "source": "./",
+      "description": "Risk-based test plans, unit tests (pytest, Vitest/Jest, PHPUnit), flaky test triage, diff coverage, Playwright e2e, OpenAPI contract tests, deterministic test data, mutation testing and CI test speed-ups.",
+      "category": "testing",
+      "tags": ["testing", "qa", "pytest", "vitest", "jest", "phpunit", "playwright", "openapi", "ci"],
+      "skills": [
+        "./skills/test-plan-writer",
+        "./skills/unit-test-writer",
+        "./skills/flaky-test-triage",
+        "./skills/coverage-gap-analysis",
+        "./skills/playwright-e2e",
+        "./skills/api-contract-testing",
+        "./skills/test-data-builders",
+        "./skills/mutation-testing-guide",
+        "./skills/ci-test-optimization"
+      ]
+    }
+  ]
+}

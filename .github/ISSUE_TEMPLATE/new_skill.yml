@@ -1,0 +1,49 @@
+name: New skill proposal
+description: Propose a new skill (or offer to write one)
+labels: ["new skill"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Good skills solve one recurring testing task end to end, work from evidence (reports the
+        tools already produce), are safe by default (read-only scripts, CI changes confirmed),
+        and include a tested helper script when that adds reliability.
+        See CONTRIBUTING.md and templates/skill/SKILL.md.
+  - type: input
+    id: name
+    attributes:
+      label: Skill name
+      description: lowercase-with-hyphens, max 64 characters
+      placeholder: "snapshot-test-review"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What task does it handle, and when should the agent use it?
+      description: Example user requests that should trigger it.
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Proposed workflow
+      description: Steps, exact commands per stack (pytest, Vitest/Jest, PHPUnit, ...), decision points, what the output looks like.
+  - type: textarea
+    id: script
+    attributes:
+      label: Helper script (optional)
+      description: What would a deterministic script check or generate? Inputs, outputs, exit codes.
+  - type: textarea
+    id: safety
+    attributes:
+      label: Safety
+      description: What could go wrong (overwritten files, leaked tokens, costly CI runs), and how the skill prevents it.
+    validations:
+      required: true
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to write this skill

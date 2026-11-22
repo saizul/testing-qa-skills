@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="3" time="12.5">
+  <testsuite name="Cart" file="src/cart.test.ts" time="7.5">
+    <testcase classname="Cart adds" name="Cart adds" time="5.0" file="src/cart.test.ts"/>
+    <testcase classname="Cart removes" name="Cart removes" time="2.5" file="src/cart.test.ts"/>
+  </testsuite>
+  <testsuite name="Search" file="src/search.test.ts" time="5">
+    <testcase classname="Search finds" name="Search finds" time="5"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,47 @@
+name: Bug report
+description: A script crashed, reported a wrong finding, or a skill gave wrong advice
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Never paste secrets, tokens, cookies (HAR files!) or customer data.** Attach a minimal,
+        redacted input (JUnit XML, coverage report, spec file) that reproduces the problem.
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Skill
+      options:
+        - test-plan-writer
+        - unit-test-writer
+        - flaky-test-triage
+        - coverage-gap-analysis
+        - playwright-e2e
+        - api-contract-testing
+        - test-data-builders
+        - mutation-testing-guide
+        - ci-test-optimization
+        - validator / repository tooling
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: The command you ran, its output, and (for wrong findings) a minimal redacted input.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: "macOS 15, Python 3.12, pytest 8.3 / Vitest 3 / PHPUnit 11, Claude Code / Codex CLI"
+    validations:
+      required: true

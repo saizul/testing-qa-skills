@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="pytest" tests="7">
+    <testcase classname="tests.test_checkout" name="test_pay_with_card" time="0.700"/>
+    <testcase classname="tests.test_checkout" name="test_total" time="0.700"/>
+    <testcase classname="tests.test_search" name="test_autocomplete" time="0.700"><failure message="AssertionError: ECONNREFUSED 127.0.0.1:6379">trace line 2</failure></testcase>
+    <testcase classname="tests.test_users" name="test_signup" time="0.700"/>
+    <testcase classname="tests.test_users" name="test_legacy_import" time="0.700"><failure message="FileNotFoundError: fixtures/legacy.csv">trace line 2</failure></testcase>
+    <testcase classname="tests.test_users" name="test_optional" time="0"><skipped message="needs redis"/></testcase>
+    <testcase classname="tests.test_reports" name="test_export" time="0.700"/>
+  </testsuite>
+</testsuites>

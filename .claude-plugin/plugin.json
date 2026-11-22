@@ -1,0 +1,14 @@
+{
+  "name": "testing-qa-skills",
+  "displayName": "Testing & QA Skills",
+  "version": "0.1.0",
+  "description": "Agent Skills for writing and maintaining tests: risk-based test plans, unit tests for pytest, Vitest/Jest and PHPUnit, flaky test triage, diff coverage gaps, Playwright e2e, OpenAPI contract tests, deterministic test data, mutation testing and CI test optimization.",
+  "author": {
+    "name": "Saizul Amin",
+    "url": "https://github.com/saizul"
+  },
+  "homepage": "https://github.com/saizul/testing-qa-skills",
+  "repository": "https://github.com/saizul/testing-qa-skills",
+  "license": "MIT",
+  "keywords": ["testing", "qa", "unit-tests", "pytest", "vitest", "jest", "phpunit", "playwright", "openapi", "mutation-testing", "flaky-tests", "ci"]
+}

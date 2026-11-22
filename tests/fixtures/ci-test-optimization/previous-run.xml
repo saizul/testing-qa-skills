@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="pytest">
+    <testcase classname="tests.test_api.TestUsers" name="test_list" file="tests/test_api.py" time="50.400"/>
+    <testcase classname="tests.test_api.TestUsers" name="test_create" file="tests/test_api.py" time="22.200"/>
+    <testcase classname="tests.test_checkout.TestCheckout" name="test_pay" file="tests/test_checkout.py" time="78.000"/>
+    <testcase classname="tests.test_search.TestSearch" name="test_query" file="tests/test_search.py" time="14.400"/>
+    <testcase classname="tests.test_search.TestSearch" name="test_facets" file="tests/test_search.py" time="10.800"/>
+    <testcase classname="tests.test_utils.TestUtils" name="test_slug" file="tests/test_utils.py" time="0.240"/>
+    <testcase classname="tests.test_utils.TestUtils" name="test_money" file="tests/test_utils.py" time="0.360"/>
+    <testcase classname="tests.test_reports.TestReports" name="test_pdf" file="tests/test_reports.py" time="36.000"/>
+    <testcase classname="tests.test_auth.TestAuth" name="test_login" file="tests/test_auth.py" time="9.600"/>
+    <testcase classname="tests.test_auth.TestAuth" name="test_logout" file="tests/test_auth.py" time="4.800"/>
+  </testsuite>
+</testsuites>

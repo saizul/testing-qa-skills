@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.CartTest" tests="2" failures="0">
+  <testcase name="addsItem" classname="com.example.CartTest" time="0.2">
+    <flakyFailure message="expected:&lt;2&gt; but was:&lt;1&gt;" type="java.lang.AssertionError">stack</flakyFailure>
+  </testcase>
+  <testcase name="removesItem" classname="com.example.CartTest" time="0.1"/>
+</testsuite>

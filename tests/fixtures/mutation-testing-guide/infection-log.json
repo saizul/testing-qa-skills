@@ -1,0 +1,93 @@
+{
+  "stats": {
+    "totalMutantsCount": 6,
+    "killedCount": 3,
+    "notCoveredCount": 1,
+    "escapedCount": 1,
+    "errorCount": 0,
+    "syntaxErrorCount": 0,
+    "skippedCount": 0,
+    "ignoredCount": 0,
+    "timeOutCount": 1,
+    "msi": 66,
+    "mutationCodeCoverage": 83,
+    "coveredCodeMsi": 80
+  },
+  "escaped": [
+    {
+      "mutator": {
+        "mutatorName": "GreaterThan",
+        "originalSourceCode": "if ($qty > 10) {",
+        "mutatedSourceCode": "if ($qty >= 10) {",
+        "originalFilePath": "src/Cart.php",
+        "originalStartLine": 14
+      },
+      "diff": "--- Original\n+++ New\n@@ @@\n-        if ($qty > 10) {\n+        if ($qty >= 10) {\n",
+      "processOutput": "OK (3 tests)"
+    }
+  ],
+  "timeouted": [
+    {
+      "mutator": {
+        "mutatorName": "Decrement",
+        "originalSourceCode": "$i--;",
+        "mutatedSourceCode": "$i++;",
+        "originalFilePath": "src/Cart.php",
+        "originalStartLine": 20
+      },
+      "diff": "--- Original\n+++ New\n@@ @@\n-        $i--;\n+        $i++;\n",
+      "processOutput": "OK (3 tests)"
+    }
+  ],
+  "killed": [
+    {
+      "mutator": {
+        "mutatorName": "Plus",
+        "originalSourceCode": "$a + $b",
+        "mutatedSourceCode": "$a - $b",
+        "originalFilePath": "src/Cart.php",
+        "originalStartLine": 9
+      },
+      "diff": "--- Original\n+++ New\n@@ @@\n-        $a + $b\n+        $a - $b\n",
+      "processOutput": "OK (3 tests)"
+    },
+    {
+      "mutator": {
+        "mutatorName": "TrueValue",
+        "originalSourceCode": "return true;",
+        "mutatedSourceCode": "return false;",
+        "originalFilePath": "src/Cart.php",
+        "originalStartLine": 30
+      },
+      "diff": "--- Original\n+++ New\n@@ @@\n-        return true;\n+        return false;\n",
+      "processOutput": "OK (3 tests)"
+    },
+    {
+      "mutator": {
+        "mutatorName": "Multiplication",
+        "originalSourceCode": "$x * $r",
+        "mutatedSourceCode": "$x / $r",
+        "originalFilePath": "src/Tax.php",
+        "originalStartLine": 5
+      },
+      "diff": "--- Original\n+++ New\n@@ @@\n-        $x * $r\n+        $x / $r\n",
+      "processOutput": "OK (3 tests)"
+    }
+  ],
+  "errored": [],
+  "syntaxErrors": [],
+  "uncovered": [
+    {
+      "mutator": {
+        "mutatorName": "PublicVisibility",
+        "originalSourceCode": "public function round()",
+        "mutatedSourceCode": "protected function round()",
+        "originalFilePath": "src/Tax.php",
+        "originalStartLine": 12
+      },
+      "diff": "--- Original\n+++ New\n@@ @@\n-        public function round()\n+        protected function round()\n",
+      "processOutput": "OK (3 tests)"
+    }
+  ],
+  "ignored": []
+}

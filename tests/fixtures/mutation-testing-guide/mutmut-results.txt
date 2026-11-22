@@ -1,0 +1,7 @@
+    shop.pricing.x_discount__mutmut_1: killed
+    shop.pricing.x_discount__mutmut_2: survived
+    shop.pricing.x_discount__mutmut_3: killed
+    shop.pricing.xǁCartǁtotal__mutmut_1: no tests
+    shop.pricing.xǁCartǁtotal__mutmut_2: timeout
+    shop.util.x_slug__mutmut_1: killed
+    shop.util.x_slug__mutmut_2: not checked

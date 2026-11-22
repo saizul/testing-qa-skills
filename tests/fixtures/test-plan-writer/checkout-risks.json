@@ -1,0 +1,13 @@
+{
+  "feature": "Guest checkout with saved cards",
+  "areas": [
+    {"name": "Card payment and 3-D Secure", "impact": 5, "likelihood": 4,
+     "tests": ["unit", "integration", "e2e", "exploratory"], "notes": "new 3DS2 provider SDK"},
+    {"name": "Order total and tax rounding", "impact": 5, "likelihood": 3, "tests": ["unit"]},
+    {"name": "Guest email capture",
+     "impact_factors": {"users": 4, "money": 2, "data": 3, "legal": 4},
+     "likelihood_factors": {"complexity": 2, "change": 3, "history": 2, "dependencies": 1}},
+    {"name": "Address autocomplete", "impact": 2, "likelihood": 3, "tests": ["unit"]},
+    {"name": "Order confirmation email", "impact": 3, "likelihood": 3, "tests": ["unit", "integration"]}
+  ]
+}

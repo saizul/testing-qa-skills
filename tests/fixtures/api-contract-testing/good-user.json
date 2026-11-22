@@ -1,0 +1,11 @@
+{
+  "id": 42,
+  "email": "ada@example.com",
+  "role": "admin",
+  "nickname": null,
+  "created_at": "2026-11-01T10:00:00Z",
+  "tags": [
+    "a",
+    "b"
+  ]
+}

@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Release artifacts (built by .github/workflows/release.yml)
+dist/
+
+# Local outputs when the scripts are tried at the repo root
+# (anchored with / so the test fixtures under tests/fixtures/ are kept)
+/coverage.xml
+/lcov.info
+/*.har
+/mutants/
+/reports/
+/junit*.xml
+
+# Never commit credentials
+*.env
+!*.env.example
+playwright/.auth/
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store

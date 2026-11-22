@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Unit" tests="3">
+    <testsuite name="Tests\\Unit\\MailerTest" file="tests/Unit/MailerTest.php">
+      <testcase name="testSends" class="Tests\\Unit\\MailerTest" classname="Tests.Unit.MailerTest" file="tests/Unit/MailerTest.php" time="0.01"/>
+      <testcase name="testRetries" class="Tests\\Unit\\MailerTest" classname="Tests.Unit.MailerTest" file="tests/Unit/MailerTest.php" time="0.02"><error type="RuntimeException">Connection reset by peer</error></testcase>
+      <testcase name="testRetries" class="Tests\\Unit\\MailerTest" classname="Tests.Unit.MailerTest" file="tests/Unit/MailerTest.php" time="0.02"/>
+    </testsuite>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,4 @@
+{"meta": {"version": "7.6.1"}, "files": {
+  "src/app/pricing.py": {"executed_lines": [1, 9, 10, 11, 14, 35, 36], "missing_lines": [12]},
+  "src/app/utils.py": {"executed_lines": [1, 5, 6], "missing_lines": []}
+}, "totals": {}}

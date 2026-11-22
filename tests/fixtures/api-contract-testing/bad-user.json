@@ -1,0 +1,12 @@
+{
+  "id": 0,
+  "email": "not-an-email",
+  "role": "owner",
+  "created_at": "yesterday",
+  "password": "x",
+  "extra": 1,
+  "tags": [
+    "a",
+    "a"
+  ]
+}

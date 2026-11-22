@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<coverage version="7.6.1" line-rate="0.6" branch-rate="0" lines-covered="6" lines-valid="10" timestamp="1732000000000">
+  <sources>
+    <source>/home/runner/work/shop/shop/src</source>
+  </sources>
+  <packages>
+    <package name="app" line-rate="0.6">
+      <classes>
+        <class name="pricing.py" filename="app/pricing.py" line-rate="0.7">
+          <lines>
+            <line number="1" hits="1"/>
+            <line number="9" hits="5"/>
+            <line number="10" hits="5"/>
+            <line number="11" hits="5"/>
+            <line number="12" hits="0"/>
+            <line number="14" hits="5"/>
+            <line number="35" hits="1"/>
+            <line number="36" hits="0"/>
+          </lines>
+        </class>
+        <class name="utils.py" filename="app/utils.py" line-rate="0.5">
+          <lines>
+            <line number="1" hits="1"/>
+            <line number="5" hits="1"/>
+            <line number="6" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>
