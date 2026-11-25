@@ -101,3 +101,21 @@ def test_text_and_errors(tmp_path):
     empty.write_text("<testsuites/>")
     assert run_script(SKILL, SCRIPT, str(empty)).returncode == 2
     assert run_script(SKILL, SCRIPT, "--help").returncode == 0
+
+
+def test_out_dir_writes_one_file_per_shard(tmp_path):
+    out = tmp_path / "plan" / "shards"
+    _, data = plan(*SHARDS, "--shards", "3", "--out-dir", str(out))
+    assert sorted(p.name for p in out.iterdir()) == ["shard-1.txt", "shard-2.txt", "shard-3.txt"]
+    assert data["files"] == [str(out / f"shard-{k}.txt") for k in (1, 2, 3)]
+    assert (out / "shard-1.txt").read_text() == "tests/test_checkout.py\n"
+    written = sorted(ln for p in out.iterdir() for ln in p.read_text().splitlines())
+    assert written == sorted(i for s in data["shards"] for i in s["items"])
+
+
+def test_out_dir_text_output_and_error(tmp_path):
+    r = run_script(SKILL, SCRIPT, *SHARDS, "--shards", "2", "--out-dir", str(tmp_path / "s"))
+    assert r.returncode == 0 and "wrote 2 shard files" in r.stdout
+    blocker = tmp_path / "file"
+    blocker.write_text("x")
+    assert run_script(SKILL, SCRIPT, *SHARDS, "--out-dir", str(blocker)).returncode == 2

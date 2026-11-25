@@ -10,6 +10,9 @@ median duration so they are still distributed.
 Typical use in CI (shard K of N, 1-based):
   pytest $(python3 shard_plan.py timings/*.xml --items tests.txt --shards 4 --shard 2 --format lines)
 
+Plan once and fan out: --out-dir DIR writes shard-1.txt .. shard-N.txt (one item per
+line) so a single planning job can upload them as an artifact for the shard jobs.
+
 It also reports the total and slowest tests, the imbalance of the plan, and how many
 shards you need to hit a wall-clock target (--target-minutes).
 
@@ -107,6 +110,17 @@ def shards_for_target(items: dict[str, float], target_s: float, overhead_s: floa
     return None
 
 
+def write_shard_files(shards: list[dict], out_dir: Path) -> list[str]:
+    """Write shard-K.txt (one item per line) for every shard; return the paths written."""
+    out_dir.mkdir(parents=True, exist_ok=True)
+    written = []
+    for s in shards:
+        path = out_dir / f"shard-{s['shard']}.txt"
+        path.write_text("".join(f"{item}\n" for item in s["items"]), encoding="utf-8")
+        written.append(str(path))
+    return written
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(
         description="Plan balanced CI test shards from JUnit XML timings.",
@@ -122,6 +136,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--overhead-seconds", type=float, default=60, help="per-shard setup cost (default 60)")
     p.add_argument("--max-imbalance", type=float, help="exit 1 if (max-min)/mean shard time %% is higher")
     p.add_argument("--top", type=int, default=10, help="slowest tests to show (default 10)")
+    p.add_argument("--out-dir", type=Path, help="also write shard-1.txt .. shard-N.txt into this directory")
     p.add_argument("--format", choices=["text", "json", "lines"], default="text")
     p.add_argument("--json", action="store_true", help="same as --format json")
     args = p.parse_args(argv)
@@ -179,6 +194,12 @@ def main(argv: list[str] | None = None) -> int:
         result["suggested_shards"] = shards_for_target(
             timings, args.target_minutes * 60, args.overhead_seconds
         )
+    if args.out_dir:
+        try:
+            result["files"] = write_shard_files(shards, args.out_dir)
+        except OSError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
     failed = args.max_imbalance is not None and imbalance > args.max_imbalance
     if args.format == "lines":
         chosen = shards if args.shard is None else [shards[args.shard - 1]]
@@ -197,6 +218,8 @@ def main(argv: list[str] | None = None) -> int:
     )
     for s in shards if args.shard is None else [shards[args.shard - 1]]:
         print(f"  shard {s['shard']}: {s['seconds']}s, {s['count']} items")
+    if args.out_dir:
+        print(f"  wrote {len(result['files'])} shard files to {args.out_dir}")
     if unknown:
         print(f"  {len(unknown)} item(s) without timing got the median duration")
     if "suggested_shards" in result:

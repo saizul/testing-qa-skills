@@ -36,7 +36,7 @@ tested, standard-library-only Python script, so the agent works from parsed repo
 | [api-contract-testing](skills/api-contract-testing/SKILL.md) | Validates HAR / JSON Lines responses against OpenAPI 3.0/3.1 schemas; undocumented paths and statuses; contract test recipes; breaking-change rules | "Does our API actually match openapi.yaml? Here is a HAR" |
 | [test-data-builders](skills/test-data-builders/SKILL.md) | Generates deterministic builders (Python, TypeScript, PHP) from a sample JSON; scans for unseeded random, Faker, `Date.now`, `uuid4` | "Create test data builders for Order and stop tests failing on dates" |
 | [mutation-testing-guide](skills/mutation-testing-guide/SKILL.md) | When and how to run mutmut, Stryker, Infection; parses their reports into a score per file and surviving mutants; how to kill survivors | "Coverage is 90% but bugs slip through. Set up mutation testing for pricing" |
-| [ci-test-optimization](skills/ci-test-optimization/SKILL.md) | Caching, parallelism, affected-tests selection, timing-balanced sharding from JUnit XML, retries policy | "CI takes 25 minutes. Split the tests across 4 runners evenly" |
+| [ci-test-optimization](skills/ci-test-optimization/SKILL.md) | Caching, parallelism, affected-tests selection, timing-balanced sharding from JUnit XML (plan once, write per-shard files), retries policy | "CI takes 25 minutes. Split the tests across 4 runners evenly" |
 
 ## Install
 
