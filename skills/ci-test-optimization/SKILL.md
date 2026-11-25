@@ -57,9 +57,12 @@ Paths below are relative to this skill's folder (in Claude Code: `${CLAUDE_SKILL
    python3 scripts/shard_plan.py junit/*.xml --shards 4 --target-minutes 8   # how many shards for 8 min?
    python3 scripts/shard_plan.py junit/*.xml --items all-tests.txt --shards 4 --shard 2 --format lines
    python3 scripts/shard_plan.py junit/*.xml --by class --shards 6 --json --max-imbalance 15
+   python3 scripts/shard_plan.py junit/*.xml --items all-tests.txt --shards 4 --out-dir shards/
    ```
    `--items` lists every current test file (`git ls-files 'tests/**/test_*.py'`) so new
    files with no timing still get scheduled (median duration) and deleted files drop out.
+   `--out-dir` writes `shard-1.txt` .. `shard-N.txt` so one planning job can upload the
+   plan as an artifact and each shard job reads its own file.
    Report paths may need `--strip-prefix`. Wire it into CI with the matrix examples in
    [references/sharding.md](references/sharding.md); refresh timings from main regularly.
    Runner-native sharding (`playwright --shard`, `vitest --shard`, `jest --shard`) is

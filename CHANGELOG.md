@@ -6,6 +6,11 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- `ci-test-optimization`: `shard_plan.py --out-dir DIR` writes `shard-1.txt` .. `shard-N.txt`
+  (one item per line) so a single planning job can hand each shard job its list.
+
 ## [0.1.0] - 2026-11-22
 
 ### Added
