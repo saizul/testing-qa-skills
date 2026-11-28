@@ -3,7 +3,7 @@
 
 Scans *.spec.ts/js, *.test.ts/js, *.setup.ts/js and *.e2e.ts/js files (or the files you
 pass) for patterns the Playwright docs advise against: fixed sleeps, missing await on
-web-first assertions, non-retrying assertions, XPath and layout-dependent CSS
+web-first assertions and on page/locator actions, non-retrying assertions, XPath and layout-dependent CSS
 selectors, legacy ElementHandle APIs, force clicks, networkidle waits, committed
 test.only and hard-coded base URLs.
 
@@ -129,6 +129,16 @@ RULES = [
 
 AWAIT_RX = re.compile(r"(?<![\w.])expect(\.soft)?\s*\(")
 MATCHER_RX = re.compile(r"\)\s*(\.not)?\s*\.(" + WEB_FIRST + r")\s*\(")
+ACTIONS = (
+    "click|dblclick|fill|press|pressSequentially|type|check|uncheck|setChecked|selectOption|"
+    "setInputFiles|hover|tap|focus|blur|clear|dragTo|dispatchEvent|goto|reload|goBack|goForward|"
+    "waitForURL|waitForLoadState|waitForResponse|waitForRequest|setViewportSize|screenshot"
+)
+# A statement that starts with a page/frame/locator chain and calls an async action.
+ACTION_STMT_RX = re.compile(
+    r"^(page|frame|popup|newPage|context|\w*[Ll]ocator\w*|\w+(Page|Button|Link|Input|Field|Row|Dialog))\b"
+    r"[^;=]*?\.(" + ACTIONS + r")\s*\("
+)
 LOGIN_RX = re.compile(
     r"""getByLabel\(\s*['"`]password|type=["']?password|#password|\[name=["']?password""", re.I
 )
@@ -223,6 +233,21 @@ def lint_text(text: str, filename: str = "<stdin>") -> list[dict]:
                         "code": raw.strip()[:160],
                     }
                 )
+        # Missing await on an action: the promise floats and the next step races it.
+        stmt = code.strip()
+        if "PW015" not in disabled and ACTION_STMT_RX.match(stmt) and not stmt.endswith((".then(", ",")):
+            findings.append(
+                {
+                    "file": filename,
+                    "line": n,
+                    "rule": "PW015",
+                    "severity": "high",
+                    "title": "page/locator action without await",
+                    "fix": "add await: the action runs in the background and the next line races it "
+                    "(failures surface later or not at all)",
+                    "code": raw.strip()[:160],
+                }
+            )
         if LOGIN_RX.search(code) and ".fill(" in code:
             login_lines.append(n)
     if login_lines and not is_setup and "PW014" not in file_disabled:

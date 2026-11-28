@@ -8,6 +8,9 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- `playwright-e2e`: `spec_lint.py` rule `PW015` (high) for page, frame and locator
+  actions (`click`, `fill`, `goto`, `press`, `waitForURL`, ...) called as a statement
+  without `await`; assignments, `return` and `Promise.all` are not reported.
 - `ci-test-optimization`: `shard_plan.py --out-dir DIR` writes `shard-1.txt` .. `shard-N.txt`
   (one item per line) so a single planning job can hand each shard job its list.
 
