@@ -1,6 +1,6 @@
 ---
 name: playwright-e2e
-description: Write and stabilise Playwright Test end-to-end tests - user-facing locators (getByRole, getByLabel, getByTestId), web-first assertions, custom fixtures and page objects, authentication with storageState and setup projects, network mocking with page.route, test data isolation, trace viewer and UI mode debugging, CI config with retries, sharding and reports; plus a linter script that finds waitForTimeout, missing await on expect, non-retrying assertions, XPath and nth-child selectors, force clicks, networkidle and committed test.only. Use when the user writes, reviews or debugs Playwright tests, asks about e2e/browser tests, flaky UI tests, logging in once for all tests, or reading a Playwright trace.
+description: Write and stabilise Playwright Test end-to-end tests - user-facing locators (getByRole, getByLabel, getByTestId), web-first assertions, custom fixtures and page objects, authentication with storageState and setup projects, network mocking with page.route, test data isolation, trace viewer and UI mode debugging, CI config with retries, sharding and reports; plus a linter script that finds waitForTimeout, missing await on expect and on actions (click, fill, goto), non-retrying assertions, XPath and nth-child selectors, force clicks, networkidle and committed test.only. Use when the user writes, reviews or debugs Playwright tests, asks about e2e/browser tests, flaky UI tests, logging in once for all tests, or reading a Playwright trace.
 license: MIT
 compatibility: Python 3.8+ for the linter. Recipes target @playwright/test 1.4x-1.5x (TypeScript/JavaScript).
 metadata:
@@ -60,6 +60,9 @@ Paths below are relative to this skill's folder (in Claude Code: `${CLAUDE_SKILL
    python3 scripts/spec_lint.py e2e --fail-on high --json
    ```
    Fix findings; silence deliberate ones with `// spec-lint-disable-line PW010`.
+   Fix `PW003` (assertion without `await`) and `PW015` (action such as `click()`,
+   `fill()` or `goto()` without `await`) first: the test keeps running while the step is
+   still pending, so failures show up on a later line or never.
 7. **Prove stability** before calling it done:
    `npx playwright test checkout.spec.ts --repeat-each 20 --workers 4 --retries 0`.
 8. **Debug failures with the trace**, not by adding waits: see
